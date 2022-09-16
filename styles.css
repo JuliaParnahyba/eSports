@@ -1,0 +1,190 @@
+/* #### RESETS #### */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* para contar o tamanho das caixas incluindo a borda/padding de preenchimento */
+}
+
+ul {
+  list-style: none;
+}
+
+/* #### PADRÕES #### */
+
+body * {
+  font-family: 'Inter', sans-serif;
+  line-height: 160%;
+}
+
+/* padronização do conteúdo principal */
+main {
+  max-width: 580px; /* largura máxima da caixa main */
+  width: 90%; /* caso a tela seja menor que o padrão em pixel, aplicar 90% da largura da tela/janela */
+  margin: 32px auto; /* aplicará uma margem de 32px em cima e em baixo da caixa e automática nas laterais*/
+
+  display: grid; /* aplica o grid, como forma de manter as caixas uma acima da outra, podendo aplicar as propriedades extras como o gap */
+  gap: 24px;
+}
+
+section {
+  color: white;
+
+  background-image: linear-gradient(
+    90deg,
+    #9572fc 0%,
+    #43e7ad 50.52%,
+    #e2d45c 100%
+  );
+  padding-top: 4px;
+  border-radius: 10px;
+}
+
+section div {
+  background-color: #2a2634;
+  padding: 32px;
+  padding-top: 24px;
+  border-radius: 8px;
+}
+
+/* #### ESTILIZAÇÃO #### */
+
+/* Background */
+body {
+  background-image: url(./assets/bg.jpg); /* aplica imagem de fundo */
+  background-position: top center; /* posicionamento da imagem */
+  background-size: 100% auto; /* tamanho da imagem, com 100%H e autoV */
+  background-repeat: no-repeat; /* expande/fixa a imagem única */
+  background-color: #121214; /* cor hexadecimal (Red, Green, Blue) de fundo */
+}
+
+/* Avatar */
+header {
+  padding-top: 32px;
+  height: calc(
+    120px + 32px
+  ); /* se for aplicada margin-top não é preciso calc */
+}
+
+header div {
+  width: 120px;
+  margin: auto; /* vai aplicar uma margem automática para todos os lados, posicionando de forma centralizada a caixa. */
+  background-image: linear-gradient(
+    90deg,
+    #9572fc 0%,
+    #43e7ad 50.52%,
+    #e2d45c 100%
+  );
+  border-radius: 50%;
+
+  display: flex;
+  padding: 6px;
+
+  transition: transform 0.4s;
+
+  animation: fromTop 0.7s 0.2s backwards;
+  /* shorthand: nomeDaAnimação TempoDeExecução Delay IndicaçãoDeExecuçãoAntecipada */
+}
+
+header div:hover {
+  transform: scale(1.12);
+}
+
+header img {
+  border-radius: 50%;
+  width: 100%;
+}
+
+/* Seções */
+main section {
+  animation: fromBottom 0.7s backwards;
+}
+
+main section:nth-child(1) {
+  animation-delay: 0;
+}
+
+main section:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+main section:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Títulos */
+section h2 {
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: -0.47px;
+}
+
+/* Parágrafos */
+section p {
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: -0.18px;
+  color: #a1a1aa;
+}
+
+/* Listas */
+section ul {
+  display: flex; /* forma de visualização das caixas. */
+  /* Forma de como duas caixas se relacionam: 
+  Block → uma caixa abaixo da outra | In-line → uma ao lado da outra */
+  /* Forma de como as caixas de dentro da "caixa conteiner"
+  Displey-flex → modifica o posicionamento das caixas dentro do conteiner */
+  flex-wrap: wrap;
+  gap: 16px; /* só funciona com a aplicação do display-flex */
+  margin-top: 24px;
+}
+
+section ul li {
+  transition: transform 0.4s;
+}
+
+section ul li:hover {
+  transform: scale(1.15);
+}
+
+.game-list img {
+  border-radius: 8px;
+  width: 90px;
+}
+
+.channel-list img {
+  width: 70px;
+  border-radius: 50%; /* arredeondamento da borda, deixando a imagem redonda */
+  border: 2px solid #443e54;
+}
+
+/* #### ANIMAÇÃO #### */
+/* fonte: https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_Animations/Using_CSS_animations#defining_the_animation_sequence_using_keyframes */
+
+@keyframes fromTop {
+  /* criação da animação para que possa ser aplicada no elemento desejado, como uma function no JS */
+  from {
+    /* ponto de início */
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    /* ponto de conclusão */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fromBottom {
+  from {
+    /* ponto de início */
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    /* ponto de conclusão */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
